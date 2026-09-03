@@ -23,6 +23,10 @@ CloudSIP is designed for professional public deployment as a frontend-only stati
 - Multiple local SIP profiles
 - Configuration import and export
 - Session-only SIP passwords
+- ICE candidate and TURN usage diagnostics
+- Live jitter, packet loss, RTT, codec, bitrate and audio-level statistics
+- Independent WSS connectivity test
+- Sanitized diagnostic report export
 - Dark mode
 - Keyboard shortcuts
 
@@ -62,6 +66,8 @@ CloudSIP requires a SIP server that supports SIP over secure WebSocket and WebRT
 STUN and TURN are optional and can be configured in SIP Settings. Direct connections remain the default when no ICE servers are configured.
 
 Quick Setup builds the SIP URI and the standard Asterisk WSS URL from the PBX host and extension. Advanced Setup keeps every SIP and ICE field editable. Profiles and configuration files remain local to the browser; exported files exclude the SIP password unless it is explicitly included.
+
+The diagnostics panel reads WebRTC statistics directly from the active peer connection. Diagnostic reports exclude SIP passwords, TURN credentials and raw device identifiers.
 
 ## Security and storage
 

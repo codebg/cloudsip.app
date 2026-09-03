@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Added selected ICE candidate and TURN relay diagnostics.
+- Added live call quality statistics for jitter, packet loss, RTT, codec, bitrate and audio level.
+- Added an independent WSS connectivity test with actionable failure messages.
+- Added sanitized JSON diagnostic report export.
 - Added quick and advanced SIP setup modes.
 - Added multiple local SIP profiles.
 - Added JSON configuration import and export.
