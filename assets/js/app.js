@@ -31,6 +31,30 @@ function buildSipConfig(settings){
   };
 }
 
+function sipConfigsMatch(firstConfig, secondConfig){
+  if (!firstConfig || !secondConfig) return false;
+  return firstConfig.websocketUrl === secondConfig.websocketUrl
+    && firstConfig.sipUri === secondConfig.sipUri
+    && firstConfig.password === secondConfig.password
+    && firstConfig.displayName === secondConfig.displayName
+    && firstConfig.extension === secondConfig.extension
+    && firstConfig.sessionTimers === secondConfig.sessionTimers
+    && JSON.stringify(firstConfig.iceServers || []) === JSON.stringify(secondConfig.iceServers || []);
+}
+
+function getSipHandlers(){
+  return {
+    onIncomingCall: handleIncomingCall,
+    onCallAccepted: handleCallAccepted,
+    onCallEnded: handleCallEnded,
+    onCallFailed: handleCallFailed,
+    muted: handleCallMuted,
+    unmuted: handleCallUnmuted,
+    hold: handleCallHold,
+    unhold: handleCallUnhold
+  };
+}
+
 function updateHeaderFromSettings(settings){
   const displayNameText = document.getElementById('displayNameText');
   if (displayNameText) {
@@ -102,9 +126,17 @@ async function boot(){
   initPresenceSipControls();
   initKeyboardShortcuts();
   const settings = getSettings();
+  let activeSipConfig = buildSipConfig(settings);
   updateTodayDate();
   updateHeaderFromSettings(settings);
-  window.addEventListener('settings:changed', (event) => updateHeaderFromSettings(event.detail?.settings || getSettings()));
+  window.addEventListener('settings:changed', async (event) => {
+    const nextSettings = event.detail?.settings || getSettings();
+    updateHeaderFromSettings(nextSettings);
+    const nextSipConfig = buildSipConfig(nextSettings);
+    if (sipConfigsMatch(activeSipConfig, nextSipConfig)) return;
+    activeSipConfig = nextSipConfig;
+    await initSipClient(activeSipConfig, getSipHandlers());
+  });
   await initAudioDevices();
   initSoundManager();
 
@@ -116,16 +148,7 @@ async function boot(){
     return;
   }
 
-  await initSipClient(buildSipConfig(settings), {
-    onIncomingCall: handleIncomingCall,
-    onCallAccepted: handleCallAccepted,
-    onCallEnded: handleCallEnded,
-    onCallFailed: handleCallFailed,
-    muted: handleCallMuted,
-    unmuted: handleCallUnmuted,
-    hold: handleCallHold,
-    unhold: handleCallUnhold
-  });
+  await initSipClient(activeSipConfig, getSipHandlers());
 
   contactsModule.initContacts();
   renderLogs();
