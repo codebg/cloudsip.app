@@ -19,6 +19,10 @@ WebRTC requires HTTPS or localhost for microphone access and secure media permis
 4. Open Settings and enter your SIP WebSocket server, SIP URI, username, and password.
 5. Allow microphone permission when prompted.
 
+For networks that require NAT traversal, add one or more STUN or TURN URLs in SIP Settings. Add one URL per line. TURN credentials are stored with the other SIP settings in the local browser profile.
+
+SIP session timers are enabled by default. CloudSIP also uses JsSIP transport recovery and retries registration after network restoration, browser wake, or tab restoration.
+
 No backend is required by default. CloudSIP runs in the browser and communicates directly with your SIP WebSocket endpoint.
 
 ## Local testing
