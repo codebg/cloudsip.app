@@ -20,13 +20,16 @@ function buildSipConfig(settings){
     websocketUrl: settings.websocketUrl,
     sipUri: settings.sipUri || `sip:${settings.extension}@${settings.sipDomain}`,
     password: settings.password,
+    iceServers: settings.iceServers,
+    sessionTimers: settings.sessionTimers,
+    reconnectMinSeconds: 2,
+    reconnectMaxSeconds: 30,
     displayName: settings.displayName || settings.extension,
     extension: settings.extension,
     autoAnswer: settings.autoAnswer,
     autoHoldOnSwitch: settings.autoHoldOnSwitch
   };
 }
-
 
 function sipConfigsMatch(firstConfig, secondConfig){
   if (!firstConfig || !secondConfig) return false;
@@ -35,7 +38,9 @@ function sipConfigsMatch(firstConfig, secondConfig){
     && firstConfig.sipUri === secondConfig.sipUri
     && firstConfig.password === secondConfig.password
     && firstConfig.displayName === secondConfig.displayName
-    && firstConfig.extension === secondConfig.extension;
+    && firstConfig.extension === secondConfig.extension
+    && firstConfig.sessionTimers === secondConfig.sessionTimers
+    && JSON.stringify(firstConfig.iceServers || []) === JSON.stringify(secondConfig.iceServers || []);
 }
 
 function updateHeaderFromSettings(settings){
