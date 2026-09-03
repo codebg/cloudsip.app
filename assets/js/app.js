@@ -14,6 +14,8 @@ import { initPresence } from './presence.js';
 import { initKeyboardShortcuts } from './keyboard-shortcuts.js';
 import { initTheme } from './theme-manager.js';
 import { blockSipForInvalidCompanyWebsite, normalizeCompanyWebsiteUrl } from './branding-check.js';
+import { initHeadsetControls } from './headset-controls.js';
+import { initOptionalSipModules } from './optional-sip-modules.js';
 
 function buildSipConfig(settings){
   return {
@@ -127,6 +129,8 @@ async function boot(){
   initPresence();
   initPresenceSipControls();
   initKeyboardShortcuts();
+  initHeadsetControls();
+  initOptionalSipModules();
   const settings = getSettings();
   updateTodayDate();
   updateHeaderFromSettings(settings);

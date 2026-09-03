@@ -19,6 +19,13 @@ const fields = {
   autoAnswer: 'settingsAutoAnswer',
   autoRecordCalls: 'settingsAutoRecordCalls',
   autoHoldOnSwitch: 'settingsAutoHoldOnSwitch',
+  transferMode: 'settingsTransferMode',
+  callWaiting: 'settingsCallWaiting',
+  dialPlanRules: 'settingsDialPlanRules',
+  ringtoneStyle: 'settingsRingtoneStyle',
+  headsetControls: 'settingsHeadsetControls',
+  sipMessageEnabled: 'settingsSipMessageEnabled',
+  blfEnabled: 'settingsBlfEnabled',
   theme: 'settingsTheme'
 };
 
@@ -112,6 +119,13 @@ function collectSettings(){
     autoAnswer: getFieldValue(fields.autoAnswer),
     autoRecordCalls: getFieldValue(fields.autoRecordCalls),
     autoHoldOnSwitch: getFieldValue(fields.autoHoldOnSwitch),
+    transferMode: getFieldValue(fields.transferMode),
+    callWaiting: getFieldValue(fields.callWaiting),
+    dialPlanRules: getFieldValue(fields.dialPlanRules),
+    ringtoneStyle: getFieldValue(fields.ringtoneStyle),
+    headsetControls: getFieldValue(fields.headsetControls),
+    sipMessageEnabled: getFieldValue(fields.sipMessageEnabled),
+    blfEnabled: getFieldValue(fields.blfEnabled),
     theme: getFieldValue(fields.theme)
   };
 }
