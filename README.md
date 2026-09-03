@@ -19,6 +19,10 @@ CloudSIP is designed for professional public deployment as a frontend-only stati
 - Configurable STUN and TURN servers
 - Automatic SIP transport recovery after network changes and sleep
 - Configurable SIP session timers
+- Quick and advanced SIP setup modes
+- Multiple local SIP profiles
+- Configuration import and export
+- Session-only SIP passwords
 - Dark mode
 - Keyboard shortcuts
 
@@ -56,6 +60,8 @@ Then open `http://localhost:8080/var/www/html/index.html` if serving from the re
 CloudSIP requires a SIP server that supports SIP over secure WebSocket and WebRTC media. For Asterisk deployments, enable WebSocket transport, TLS, DTLS-SRTP, ICE, and a WebRTC-compatible endpoint configuration. See [`docs/ASTERISK-WEBRTC.md`](docs/ASTERISK-WEBRTC.md) for guidance.
 
 STUN and TURN are optional and can be configured in SIP Settings. Direct connections remain the default when no ICE servers are configured.
+
+Quick Setup builds the SIP URI and the standard Asterisk WSS URL from the PBX host and extension. Advanced Setup keeps every SIP and ICE field editable. Profiles and configuration files remain local to the browser; exported files exclude the SIP password unless it is explicitly included.
 
 ## Security and storage
 
