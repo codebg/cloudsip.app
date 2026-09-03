@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- Added attended transfer using SIP REFER with Replaces.
+- Added local multi-line audio conferencing.
+- Added call waiting preference, redial and recent numbers.
+- Added configurable dial-plan rules and per-profile ringtone selection.
+- Added optional WebHID headset controls and SIP MESSAGE module flags.
 - Added selected ICE candidate and TURN relay diagnostics.
 - Added live call quality statistics for jitter, packet loss, RTT, codec, bitrate and audio level.
 - Added an independent WSS connectivity test with actionable failure messages.
