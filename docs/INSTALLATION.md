@@ -23,6 +23,10 @@ For networks that require NAT traversal, add one or more STUN or TURN URLs in SI
 
 SIP session timers are enabled by default. CloudSIP also uses JsSIP transport recovery and retries registration after network restoration, browser wake, or tab restoration.
 
+Quick Setup requires only the PBX host, extension, display name, and password. It uses port `8089` and path `/ws` unless a port is included in the PBX host. Use Advanced Setup for a custom WSS URL, SIP URI, STUN, TURN, or session timer setting.
+
+SIP profiles are stored in the current browser profile. Configuration can be exported as JSON and imported on another browser. Passwords are excluded from exports by default. Disable Remember password to keep the SIP password only until the browser session ends.
+
 No backend is required by default. CloudSIP runs in the browser and communicates directly with your SIP WebSocket endpoint.
 
 ## Local testing
