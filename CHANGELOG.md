@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## [1.0.0] - 2026-09-04
 
 - Added attended transfer using SIP REFER with Replaces.
 - Added local multi-line audio conferencing.

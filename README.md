@@ -1,5 +1,7 @@
 # CloudSIP
 
+Current stable version: **1.0.0**. CloudSIP follows Semantic Versioning. Stable releases are the default; prerelease labels are optional for future testing builds.
+
 ![CloudSIP Banner](screens/screens.png)
 
 CloudSIP is a standalone browser-based WebRTC SIP softphone using JsSIP.
@@ -65,6 +67,8 @@ Then open `http://localhost:8080/var/www/html/index.html` if serving from the re
 - Microphone permission is required.
 
 ## Asterisk / WebRTC note
+
+See the [compatibility guide](docs/COMPATIBILITY.md) for Asterisk, FreePBX, Issabel and VitalPBX requirements. Release changes are listed in the [changelog](CHANGELOG.md).
 
 CloudSIP requires a SIP server that supports SIP over secure WebSocket and WebRTC media. For Asterisk deployments, enable WebSocket transport, TLS, DTLS-SRTP, ICE, and a WebRTC-compatible endpoint configuration. See [`docs/ASTERISK-WEBRTC.md`](docs/ASTERISK-WEBRTC.md) for guidance.
 
